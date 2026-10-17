@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f6ef">
+  <meta name="description" content="내 부모님을 모시는 마음으로 사랑과 정성을 다하는 한라요양원. 따뜻한 돌봄, 실내정원, 프로그램, 입소 상담 안내.">
+  <title>한라요양원 | 내 부모님을 모시는 마음으로</title>
+  <style>
+    :root{
+      --ivory:#f7f6ef; --ivory-deep:#f0f0e5; --white:#fff;
+      --sage:#76947b; --sage-mid:#55785f; --sage-dark:#294e38;
+      --sage-light:#e8eee6; --sage-pale:#f1f5ed;
+      --ink:#26392d; --sub:#53685a; --line:#dce5d9;
+      --shadow:0 24px 60px rgba(47,79,54,.10);
+      --radius:24px; --max:1180px; --head:78px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head) + 20px)}
+    body{margin:0;overflow-x:hidden;background:var(--white);color:var(--ink);font:400 18px/1.75 'Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;word-break:keep-all;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}button{font:inherit}button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible,button:focus-visible{outline:3px solid #55785f;outline-offset:5px}
+    ::selection{background:#cfdecf;color:#1a3d27}
+    .skip{position:absolute;left:14px;top:-100px;z-index:999;background:white;color:var(--ink);padding:10px 16px;border-radius:12px}
+    .skip:focus{top:12px}
+    .container{width:min(var(--max),calc(100% - 80px));margin:auto}
+    .section{padding:125px 0;position:relative;isolation:isolate}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.19em;font-weight:800;color:var(--sage-mid);text-transform:uppercase}
+    .eyebrow:before{content:"";display:block;width:27px;height:1px;background:currentColor}
+    .section-title{font-size:clamp(31px,3.55vw,46px);line-height:1.35;letter-spacing:-.055em;margin:20px 0 17px;font-weight:800}
+    .section-lead{font-size:18px;max-width:730px;line-height:1.9;color:var(--sub);margin:0}
+    .section-top{margin-bottom:50px}
+    .num{font-family:Georgia,serif;font-size:14px;color:var(--sage-mid);letter-spacing:.04em}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:54px;padding:14px 25px;border-radius:100px;background:var(--sage-dark);color:white;border:1.5px solid var(--sage-dark);font-size:16px;font-weight:800;line-height:1.4;cursor:pointer;white-space:nowrap;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 11px 24px rgba(41,78,56,.17);background:#396149}
+    .btn-outline{background:transparent;color:var(--sage-dark);border-color:#9bb49e}
+    .btn-outline:hover{background:var(--sage-light);box-shadow:none}
+    .btn-white{background:white;color:var(--sage-dark);border-color:white}
+    .btn-white:hover{background:var(--ivory);color:var(--sage-dark)}
+    .btn svg{height:19px;width:19px;flex-shrink:0}
+    .call-icon{width:19px;height:19px}
+    .scroll-progress{height:3px;position:fixed;top:0;left:0;width:100%;background:transparent;z-index:150;pointer-events:none}
+    .scroll-progress__fill{height:100%;width:0;background:var(--sage);transition:width .1s linear}
+    .site-header{position:sticky;top:0;height:var(--head);z-index:120;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:box-shadow .3s,height .3s}
+    .site-header.is-scrolled{box-shadow:0 8px 30px rgba(30,56,39,.07)}
+    .header-inner{display:flex;height:100%;align-items:center;gap:25px;justify-content:space-between}
+    .brand{display:inline-flex;align-items:center;gap:12px;flex-shrink:0;font-weight:900;letter-spacing:-.05em;font-size:23px;color:var(--sage-dark)}
+    .brand-mark{display:grid;place-items:center;width:43px;height:43px;border-radius:15px;background:var(--sage-light)}
+    .brand-mark svg{width:29px;height:29px;fill:none;stroke:var(--sage-dark);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+    .desktop-nav{display:flex;align-items:center;gap:28px;margin-left:auto}
+    .desktop-nav a{font-size:14px;font-weight:700;color:#536b58;position:relative;transition:color .2s}
+    .desktop-nav a:after{content:"";position:absolute;bottom:-6px;left:0;width:100%;height:2px;background:var(--sage-mid);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .desktop-nav a:hover,.desktop-nav a.active{color:var(--sage-dark)}
+    .desktop-nav a:hover:after,.desktop-nav a.active:after{transform:scaleX(1)}
+    .header-cta{min-height:45px;padding:10px 17px;font-size:14px}
+    .menu-toggle{display:none;width:46px;height:46px;border:1px solid var(--line);background:white;border-radius:13px;color:var(--sage-dark);align-items:center;justify-content:center;cursor:pointer}
+    .menu-toggle svg{width:23px;height:23px}
+    .mobile-nav{display:none}
+    .hero{position:relative;min-height:690px;background:var(--ivory);overflow:hidden;display:flex;align-items:center}
+    .hero:before{content:"";position:absolute;right:-14%;top:-54%;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,#e8efe4 0%,rgba(232,239,228,0) 67%);pointer-events:none}
+    .hero:after{content:"";position:absolute;bottom:-175px;left:-100px;width:430px;height:430px;border:1px solid rgba(104,145,110,.12);border-radius:50%;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:43px;align-items:center;padding:82px 0 86px}
+    .hero-copy{position:relative;z-index:3}
+    .hero-kicker{display:inline-flex;align-items:center;gap:12px;color:var(--sage-mid);letter-spacing:.1em;font-weight:800;font-size:13px;margin-bottom:28px}
+    .hero-kicker .dot{width:8px;height:8px;border-radius:100%;background:var(--sage)}
+    .hero h1{font-size:clamp(41px,4.55vw,64px);line-height:1.34;letter-spacing:-.07em;margin:0 0 24px;font-weight:900;color:var(--ink)}
+    .hero h1 em{font-style:normal;color:var(--sage-mid);position:relative;white-space:nowrap}
+    .hero h1 em:after{content:"";position:absolute;bottom:-4px;left:0;right:0;height:8px;border-radius:50%;border-bottom:3px solid #9dbb9a;transform:rotate(-1deg)}
+    .hero-desc{font-size:19px;max-width:530px;color:var(--sub);line-height:1.95;margin:0 0 33px}
+    .hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .hero-meta{display:flex;gap:17px;align-items:center;margin-top:33px;color:#607667;font-size:14px}
+    .hero-meta span+span{border-left:1px solid #b8caba;padding-left:18px}
+    .hero-visual{position:relative;min-height:535px;isolation:isolate}
+    .hero-orbit{position:absolute;inset:20px -14px 27px 20px;border:1px solid rgba(105,147,112,.3);border-radius:240px 240px 32px 32px;transform:rotate(5deg)}
+    .hero-art{position:absolute;inset:0 18px 12px 0;border-radius:240px 240px 28px 28px;background:linear-gradient(170deg,#d8e7d7 3%,#e8f1e6 45%,#f4f2e7 97%);overflow:hidden;box-shadow:0 30px 70px rgba(56,94,61,.16);will-change:transform}
+    .hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(255,255,255,.45),transparent 40%);pointer-events:none}
+    .hero-art svg{height:100%;width:100%;display:block}
+    .hero-caption{position:absolute;left:-32px;bottom:28px;background:rgba(255,255,255,.96);box-shadow:var(--shadow);border:1px solid #edf1e8;border-radius:18px;padding:18px 22px;min-width:240px;z-index:3}
+    .hero-caption strong{display:block;font-size:15px;color:var(--sage-dark)}
+    .hero-caption small{display:block;font-size:12px;color:#667c6c;margin-top:3px}
+    .hero-visual-tag{position:absolute;right:-15px;top:47px;background:#fff;color:var(--sage-mid);border-radius:40px;box-shadow:var(--shadow);padding:10px 18px;font-size:12px;font-weight:800;letter-spacing:.07em;z-index:3;transform:rotate(5deg)}
+    .hero-scroll{position:absolute;bottom:21px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.14em;color:var(--sage-mid);font-weight:800}
+    .hero-scroll:before{content:"";width:22px;height:31px;border-radius:14px;border:1px solid var(--sage-mid);background:radial-gradient(circle at center 7px,var(--sage-mid) 2px,transparent 3px)}
+    .trust-bar{background:var(--white);border-bottom:1px solid var(--line)}
+    .trust-items{display:grid;grid-template-columns:repeat(3,1fr);padding:26px 0}
+    .trust-item{display:flex;align-items:center;justify-content:center;gap:12px;font-size:16px;font-weight:750;color:var(--sage-dark)}
+    .trust-item+.trust-item{border-left:1px solid var(--line)}
+    .trust-item svg{width:24px;height:24px;stroke:var(--sage-mid);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .about{background:white;overflow:hidden}
+    .about-grid{display:grid;grid-template-columns:.83fr 1.17fr;gap:85px;align-items:center}
+    .about-intro p{margin:0 0 17px;color:var(--sub);line-height:1.95}
+    .about-intro p:last-child{margin:0}
+    .quote-panel{min-height:400px;border-radius:32px;background:var(--sage-pale);padding:60px 62px;position:relative;overflow:hidden;border:1px solid #e1ebdf}
+    .quote-panel:before{content:'“';position:absolute;top:-28px;left:35px;font:210px/1 Georgia,serif;color:#d5e3d2;z-index:0}
+    .quote-panel blockquote{position:relative;margin:35px 0 24px;font-size:clamp(25px,2.35vw,33px);font-weight:800;letter-spacing:-.045em;line-height:1.65;color:var(--sage-dark);z-index:1}
+    .quote-panel blockquote span{color:var(--sage-mid)}
+    .quote-panel cite{position:relative;z-index:1;font-style:normal;font-size:14px;color:var(--sub);font-weight:800}
+    .quote-leaf{position:absolute;right:-38px;bottom:-50px;width:200px;opacity:.12;color:var(--sage-mid);transform:rotate(-25deg)}
+    .care{background:var(--ivory);overflow:hidden}
+    .care-header{display:flex;justify-content:space-between;align-items:end;gap:40px}
+    .care-header .section-lead{max-width:420px}
+    .care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:21px;margin-top:55px}
+    .care-card{background:white;border:1px solid #e1e9dc;border-radius:27px;padding:38px 32px 40px;min-height:330px;transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
+    .care-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:#c5d8c3}
+    .care-card:after{content:"";position:absolute;right:-50px;bottom:-50px;width:160px;height:160px;border:1px solid #edf1e9;border-radius:50%}
+    .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+    .care-icon{width:67px;height:67px;border-radius:21px;display:grid;place-items:center;background:var(--sage-light)}
+    .care-icon svg{width:33px;height:33px;stroke:var(--sage-dark);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .care-card h3{font-size:24px;letter-spacing:-.045em;margin:0 0 15px;color:var(--sage-dark)}
+    .care-card p{margin:0;color:var(--sub);font-size:16px;line-height:1.9}
+    .garden{background:var(--white);padding:125px 0 130px;overflow:clip}
+    .garden-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:90px;align-items:start}
+    .garden-sticky{position:sticky;top:calc(var(--head) + 35px)}
+    .garden-heading{margin-bottom:26px}
+    .garden-heading .section-title{margin-bottom:10px}
+    .garden-stage{height:485px;position:relative;border-radius:30px;background:linear-gradient(155deg,#dcebd8,#edf3e9 52%,#f7f4e8);border:1px solid #dae6d6;overflow:hidden;isolation:isolate;clip-path:inset(0 7% 0 7% round 30px);transition:clip-path 1.2s cubic-bezier(.2,.8,.2,1),box-shadow .8s;}
+    .garden-stage.is-visible{clip-path:inset(0 0 0 0 round 30px);box-shadow:0 25px 60px rgba(44,80,50,.10)}
+    .garden-stage:before{content:"";position:absolute;top:-75px;right:-70px;width:390px;height:390px;border:1px solid #aac5a6;border-radius:50%;opacity:.4}
+    .garden-stage:after{content:"";position:absolute;bottom:-210px;left:-115px;width:360px;height:360px;background:#c7dcc4;border-radius:50%;opacity:.48;z-index:-1}
+    .arch{position:absolute;inset:70px 88px 77px;border:15px solid rgba(255,255,255,.52);border-bottom:0;border-radius:210px 210px 0 0;background:linear-gradient(180deg,#d0e2cc,rgba(250,250,241,.58));box-shadow:inset 0 0 0 1px rgba(71,118,80,.2)}
+    .arch:before{content:"";position:absolute;inset:0 49% 0 auto;width:2px;background:#f6fbf4a6}
+    .arch:after{content:"";position:absolute;top:52%;left:0;right:0;height:2px;background:#f6fbf4a6}
+    .plant{position:absolute;bottom:79px;width:160px;height:245px;stroke:var(--sage-mid);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.65;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+    .plant.a{left:30px;transform:rotate(-9deg) translateY(25px)}
+    .plant.b{right:20px;transform:scaleX(-1) rotate(-12deg) translateY(35px)}
+    .garden-stage.is-visible .plant.a{transform:rotate(-9deg) translateY(0)}
+    .garden-stage.is-visible .plant.b{transform:scaleX(-1) rotate(-12deg) translateY(0)}
+    .stage-info{position:absolute;left:40px;right:40px;bottom:31px;background:rgba(255,255,255,.92);border:1px solid #fff;padding:20px 23px;border-radius:17px;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .stage-info strong{display:block;font-size:18px;color:var(--sage-dark)}
+    .stage-info small{display:block;font-size:13px;color:var(--sub)}
+    .stage-tag{flex-shrink:0;color:var(--sage-mid);font-size:11px;letter-spacing:.08em;font-weight:800}
+    .garden-copy{padding-top:122px}
+    .garden-step{min-height:240px;display:flex;gap:20px;border-top:1px solid #dfe8dc;padding:43px 8px 60px 0;transition:opacity .4s}
+    .garden-step:last-child{border-bottom:1px solid #dfe8dc}
+    .garden-step .step-number{font:22px Georgia,serif;color:#99b39c;flex:0 0 40px}
+    .garden-step h3{font-size:24px;letter-spacing:-.045em;margin:0 0 13px;color:var(--sage-dark);transition:color .35s}
+    .garden-step p{font-size:17px;margin:0;color:var(--sub);line-height:1.95}
+    .garden-step.active h3{color:#2d6b42}
+    .garden-step.active .step-number{color:#517f5a}
+    .gallery{background:var(--ivory)}
+    .facility-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:23px;margin-top:48px}
+    .facility{border-radius:26px;overflow:hidden;background:#fff;border:1px solid #e2e9dd;transition:transform .3s,box-shadow .3s}
+    .facility:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .facility-photo{height:252px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#e0e9dc,#f1f4ea)}
+    .facility:nth-child(2) .facility-photo{background:linear-gradient(130deg,#f0efe3,#e3ebdf)}
+    .facility:nth-child(3) .facility-photo{background:linear-gradient(145deg,#e7efe3,#e0ebe6)}
+    .facility:nth-child(4) .facility-photo{background:linear-gradient(145deg,#edf1e7,#e0e8dc)}
+    .facility-photo:before{content:"";position:absolute;width:250px;height:250px;border:1px solid #bfd1bd;border-radius:50%;top:-105px;right:-35px}
+    .facility-photo:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:#d6e5d2a8;bottom:-77px;left:-39px}
+    .facility-placeholder{display:grid;justify-items:center;gap:12px;z-index:1;text-align:center;color:var(--sage-mid)}
+    .facility-placeholder svg{height:48px;width:48px;stroke:var(--sage-mid);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .facility-placeholder span{font-size:14px;font-weight:800;letter-spacing:.015em}
+    .facility-copy{padding:30px 33px 34px}
+    .facility-copy span{color:var(--sage-mid);font:15px Georgia,serif}
+    .facility-copy h3{font-size:23px;line-height:1.35;letter-spacing:-.04em;margin:10px 0 12px;color:var(--sage-dark)}
+    .facility-copy p{font-size:16px;line-height:1.9;color:var(--sub);margin:0}
+    .photo-disclaimer{font-size:14px;color:#647a69;margin:25px 0 0;padding-left:19px;position:relative}
+    .photo-disclaimer:before{content:"※";position:absolute;left:0}
+    .programs{background:#fff}
+    .program-intro{display:flex;align-items:end;justify-content:space-between;gap:50px;margin-bottom:50px}
+    .program-intro .section-lead{max-width:470px}
+    .program-list{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .program{background:var(--ivory);border:1px solid #e8ece2;border-radius:25px;padding:30px 24px 34px;min-height:300px;position:relative;overflow:hidden;transition:background .35s,transform .35s}
+    .program:hover{background:var(--sage-pale);transform:translateY(-5px)}
+    .program-index{color:var(--sage-mid);font:16px Georgia,serif}
+    .program-icon{margin:27px 0 23px;display:grid;place-items:center;width:67px;height:67px;background:white;border-radius:50%}
+    .program-icon svg{width:33px;height:33px;stroke:var(--sage-mid);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;fill:none}
+    .program h3{font-size:21px;margin:0 0 12px;letter-spacing:-.04em;color:var(--sage-dark)}
+    .program p{font-size:15.5px;line-height:1.85;color:var(--sub);margin:0}
+    .programs-note{margin-top:29px;display:flex;align-items:start;gap:12px;color:var(--sage-dark);font-size:16px;font-weight:700}
+    .programs-note:before{content:"✓";display:grid;place-items:center;flex-shrink:0;width:25px;height:25px;background:var(--sage-light);border-radius:50%;font-weight:900}
+    .callout-section{background:white;padding:20px 0 125px}
+    .callout{background:var(--sage-dark);color:#fff;border-radius:32px;padding:58px 70px;display:flex;align-items:center;justify-content:space-between;gap:45px;position:relative;overflow:hidden}
+    .callout:before,.callout:after{content:"";position:absolute;border:1px solid #90b29650;border-radius:50%;pointer-events:none}
+    .callout:before{width:360px;height:360px;right:-150px;top:-170px}
+    .callout:after{width:270px;height:270px;bottom:-230px;right:230px}
+    .callout h2{font-size:clamp(26px,3vw,37px);line-height:1.4;letter-spacing:-.055em;margin:0 0 15px}
+    .callout p{color:#e0e9de;font-size:17px;margin:0}
+    .callout .btn{position:relative;flex-shrink:0}
+    .admission{background:var(--ivory)}
+    .admission-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:27px;margin-top:49px}
+    .info-panel{border-radius:27px;background:#fff;padding:38px 39px;border:1px solid #e2e9dd}
+    .info-panel h3{font-size:24px;line-height:1.35;letter-spacing:-.045em;color:var(--sage-dark);margin:0 0 20px}
+    .info-list{margin:0}
+    .info-list div{display:grid;grid-template-columns:145px 1fr;gap:16px;align-items:baseline;border-bottom:1px solid var(--line);padding:17px 0}
+    .info-list div:last-child{border-bottom:0}
+    .info-list dt{font-weight:800;font-size:16px;color:var(--ink)}
+    .info-list dd{margin:0;font-size:16px;color:var(--sub)}
+    .pending{font-size:13px;font-weight:800;display:inline-block;background:var(--ivory-deep);border:1px solid var(--line);color:var(--sage-dark);border-radius:40px;padding:4px 12px}
+    .phone-large{display:inline-block;font-size:clamp(26px,3vw,37px);letter-spacing:-.045em;color:var(--sage-dark);font-weight:900;margin:4px 0 24px}
+    .contact-panel{background:var(--sage-pale);border:1px solid #dbe8d9}
+    .contact-panel p{color:var(--sub);margin:0 0 14px;font-size:16px;line-height:1.85}
+    .location{background:white}
+    .location-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:25px;margin-top:49px}
+    .location-info{background:var(--ivory);border-radius:26px;padding:40px;border:1px solid #e8ece2}
+    .location-info h3{font-size:25px;color:var(--sage-dark);margin:0 0 25px}
+    .location-info dl{margin:0}
+    .location-info dl>div{padding:16px 0;border-top:1px solid #dce6d8}
+    .location-info dt{font-size:13px;font-weight:800;color:var(--sage-mid);margin-bottom:5px}
+    .location-info dd{font-size:17px;margin:0;color:var(--ink);font-weight:650}
+    .location-info dd a{text-decoration:underline;text-underline-offset:3px}
+    .map-box{min-height:360px;position:relative;display:grid;place-items:center;background:var(--sage-pale);border:1px solid #dae7d7;border-radius:26px;overflow:hidden}
+    .map-box:before{content:"";position:absolute;inset:-50%;background:repeating-linear-gradient(30deg,transparent 0 54px,rgba(107,148,110,.11) 55px 57px,transparent 58px 110px),repeating-linear-gradient(-40deg,transparent 0 63px,rgba(107,148,110,.07) 64px 66px,transparent 67px 127px);transform:rotate(3deg)}
+    .map-label{z-index:2;text-align:center;background:white;padding:24px 28px;border-radius:19px;box-shadow:var(--shadow);border:1px solid var(--line)}
+    .map-label strong{display:block;color:var(--sage-dark);font-size:18px}
+    .map-label small{display:block;color:var(--sub);font-size:14px;margin-top:7px}
+    .footer{background:var(--sage-dark);color:#f2f6ef;padding:65px 0 56px}
+    .footer-main{display:flex;justify-content:space-between;align-items:start;gap:40px}
+    .footer-brand{font-size:26px;font-weight:900;letter-spacing:-.05em}
+    .footer p{margin:15px 0 0;color:#d9e4d8;font-size:15px}
+    .footer-small{border-top:1px solid #ffffff2b;margin-top:35px;padding-top:22px;font-size:13px;color:#d9e4d8}
+    .mobile-call{display:none}
+    /* Animated elements stay visible unless scripting starts enhancement. */
+    html.motion-ready [data-reveal]{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--delay,0ms)}
+    html.motion-ready [data-reveal="left"]{transform:translateX(-40px)}
+    html.motion-ready [data-reveal="right"]{transform:translateX(40px)}
+    html.motion-ready [data-reveal="scale"]{transform:scale(.93)}
+    html.motion-ready [data-reveal].is-visible{opacity:1;transform:none}
+    .hero .hero-kicker,.hero h1,.hero-desc,.hero-actions,.hero-meta,.hero-visual{animation:enterUp 1s both cubic-bezier(.2,.75,.2,1)}
+    .hero .hero-kicker{animation-delay:.06s}.hero h1{animation-delay:.17s}.hero-desc{animation-delay:.31s}.hero-actions{animation-delay:.43s}.hero-meta{animation-delay:.53s}.hero-visual{animation-delay:.25s}
+    @keyframes enterUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    @media(min-width:1100px){.garden-step:not(.active){opacity:.65}}
+    @media(max-width:1100px){.desktop-nav{gap:17px}.desktop-nav a{font-size:13px}.container{width:min(var(--max),calc(100% - 56px))}.hero-grid{gap:22px}.hero-visual{min-height:490px}.program-list{grid-template-columns:repeat(2,1fr)}.program{min-height:265px}.garden-grid{gap:45px}.garden-stage{height:430px}.arch{inset:65px 60px 78px}.plant{width:135px}}
+    @media(max-width:800px){:root{--head:69px}.container{width:calc(100% - 38px)}body{font-size:17px}.section{padding:82px 0}.section-top{margin-bottom:30px}.section-title{font-size:clamp(29px,6.2vw,37px)}.section-lead{font-size:17px}.site-header{height:var(--head)}.brand{font-size:21px}.brand-mark{width:39px;height:39px}.desktop-nav,.header-cta{display:none}.menu-toggle{display:inline-flex;margin-left:auto}.mobile-nav{display:none;position:absolute;top:var(--head);left:0;right:0;z-index:125;background:rgba(255,255,255,.99);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(33,64,38,.1);padding:14px 20px 24px}.mobile-nav.is-open{display:block}.mobile-nav a{display:block;padding:13px 12px;border-bottom:1px solid var(--line);font-size:17px;font-weight:700}.mobile-nav a:last-child{border-bottom:0}.hero{min-height:0}.hero-grid{grid-template-columns:1fr;padding:61px 0 93px;gap:42px}.hero h1{font-size:clamp(37px,7.8vw,52px)}.hero-desc{font-size:17px}.hero-visual{min-height:430px;max-width:530px;width:calc(100% - 15px);margin:0 auto}.hero-caption{left:-10px;bottom:13px}.hero-visual-tag{right:-7px}.hero-scroll{bottom:24px}.trust-items{padding:20px 0}.trust-item{font-size:13px;gap:5px;flex-direction:column;text-align:center;line-height:1.5;padding:0 8px}.trust-item svg{width:21px;height:21px}.about-grid{grid-template-columns:1fr;gap:34px}.quote-panel{min-height:unset;padding:42px 37px}.quote-panel blockquote{font-size:26px;margin:24px 0}.care-header,.program-intro{display:block}.care-header .section-lead,.program-intro .section-lead{max-width:unset}.care-grid{grid-template-columns:1fr;gap:15px;margin-top:30px}.care-card{min-height:0;padding:29px}.care-card .card-top{margin-bottom:19px}.care-card h3{font-size:22px}.garden{padding:82px 0}.garden-grid{grid-template-columns:1fr;gap:15px}.garden-sticky{position:relative;top:auto}.garden-stage{height:430px}.garden-copy{padding-top:14px}.garden-step{min-height:0;padding:28px 0 32px;opacity:1!important}.facility-grid{margin-top:32px}.facility-photo{height:225px}.program-list{margin-top:27px}.callout-section{padding:0 0 82px}.callout{padding:42px 35px;display:block}.callout .btn{margin-top:24px}.admission-grid,.location-grid{grid-template-columns:1fr;gap:16px;margin-top:29px}.map-box{min-height:285px}.footer{padding:52px 0 135px}.footer-main{display:block}.footer-main .btn{margin-top:27px}.mobile-call{display:block;position:fixed;z-index:140;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:11px max(16px,env(safe-area-inset-right)) calc(11px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}.mobile-call a{display:flex;width:100%;min-height:53px}.mobile-call .number{font-weight:550;font-size:14px}}
+    @media(max-width:550px){.hero-grid{padding-top:50px}.hero h1{font-size:clamp(34px,9vw,42px)}.hero h1 em{white-space:normal}.hero-visual{min-height:360px}.hero-art{right:8px}.hero-orbit{right:0}.hero-caption{min-width:0;padding:12px 15px;max-width:80%}.hero-caption strong{font-size:13px}.hero-caption small{font-size:11px}.hero-visual-tag{font-size:10px;padding:8px 11px;top:20px;right:0}.hero-meta{gap:8px;flex-wrap:wrap;font-size:13px}.hero-meta span+span{padding-left:10px}.hero-actions{align-items:stretch}.hero-actions .btn{flex:1 1 100%;min-height:54px}.quote-panel{padding:31px 26px}.quote-panel blockquote{font-size:24px}.garden-stage{height:380px}.arch{inset:65px 48px 75px}.plant{width:120px;height:190px;bottom:67px}.plant.a{left:0}.plant.b{right:0}.stage-info{left:17px;right:17px;bottom:17px;padding:15px 16px}.stage-info strong{font-size:15px}.stage-tag{display:none}.facility-grid,.program-list{grid-template-columns:1fr}.facility-photo{height:210px}.facility-copy{padding:26px}.program{min-height:unset;padding:27px}.program-icon{margin:18px 0}.callout{padding:35px 25px}.callout .btn{width:100%}.info-panel,.location-info{padding:26px 23px}.info-list div{grid-template-columns:1fr;gap:5px}.info-list dd{font-size:15px}.footer-main .btn{width:100%}.trust-item{font-size:12px}.eyebrow{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.hero-art{transform:none!important}html.motion-ready [data-reveal]{opacity:1!important;transform:none!important}.garden-stage{clip-path:inset(0 0 0 0 round 30px)!important}.plant{transform:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 바로가기</a>
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__fill" id="scrollProgress"></div></div>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="한라요양원 첫 화면으로">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 26V9M16 19C8 19 5 13 7 7c7 0 9 6 9 12ZM16 16c0-7 4-10 10-11 0 7-3 12-10 13"/><path d="M10 27h12"/></svg></span>
+        <span>한라요양원</span>
+      </a>
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <a href="#about">요양원 소개</a><a href="#care">돌봄 약속</a><a href="#garden">실내정원</a><a href="#facilities">시설 안내</a><a href="#programs">프로그램</a><a href="#admission">입소 안내</a>
+      </nav>
+      <a class="btn header-cta" href="tel:0647126100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3h4l2 5-2.5 2a16 16 0 0 0 5.5 5.5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> 입소 상담하기</a>
+      <button class="menu-toggle" type="button" id="menuToggle" aria-controls="mobileNav" aria-expanded="false" aria-label="메뉴 열기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="모바일 주요 메뉴">
+      <a href="#about">요양원 소개</a><a href="#care">돌봄 약속</a><a href="#garden">실내정원</a><a href="#facilities">시설 안내</a><a href="#programs">프로그램</a><a href="#admission">입소 안내</a><a href="#location">오시는 길</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span class="dot"></span>한라요양원 · HALLA SENIOR CARE</div>
+          <h1 id="heroTitle">내 부모님을<br>모시는 마음으로,<br><em>사랑과 정성</em>을<br>다하겠습니다.</h1>
+          <p class="hero-desc">어르신 한 분 한 분의 하루가 편안하고 행복할 수 있도록, 따뜻한 돌봄과 세심한 일상생활 지원으로 함께하겠습니다.</p>
+          <div class="hero-actions">
+            <a class="btn" href="tel:0647126100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3h4l2 5-2.5 2a16 16 0 0 0 5.5 5.5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> 입소 상담 전화하기</a>
+            <a class="btn btn-outline" href="#about">요양원 알아보기 <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-meta"><span>제주시 용문로</span><span>상담 064-712-6100</span></div>
+        </div>
+        <div class="hero-visual" aria-label="실내정원을 모티브로 한 콘셉트 일러스트. 실제 한라요양원의 시설 사진은 추후 삽입 예정">
+          <div class="hero-orbit" aria-hidden="true"></div>
+          <div class="hero-art" id="heroArt" aria-hidden="true">
+            <svg viewBox="0 0 570 630" xmlns="http://www.w3.org/2000/svg" role="presentation">
+              <defs>
+                <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1e5d2"/><stop offset="1" stop-color="#eef1e4"/></linearGradient>
+                <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b4cbb2"/><stop offset="1" stop-color="#e3e9d7"/></linearGradient>
+                <radialGradient id="sun"><stop stop-color="#fffdf2" stop-opacity=".95"/><stop offset="1" stop-color="#fffdf2" stop-opacity="0"/></radialGradient>
+              </defs>
+              <rect width="570" height="630" fill="url(#wall)"/>
+              <circle cx="405" cy="175" r="180" fill="url(#sun)"/>
+              <path d="M100 475V195C100 87 183 44 284 44s184 67 184 164v267" fill="#edf5e6" stroke="#a5c3a4" stroke-width="15"/>
+              <path d="M283 49v425M101 269h367M103 375h363" stroke="#c7d9c0" stroke-width="9"/>
+              <path d="M101 202Q284 120 468 207" fill="none" stroke="#ddebd4" stroke-width="8"/>
+              <path d="M0 450C130 430 240 456 327 441s171-7 243 10v179H0Z" fill="url(#floor)"/>
+              <path d="M0 505Q280 470 570 515M0 559Q280 530 570 560" fill="none" stroke="#acc5aa" stroke-width="2" opacity=".4"/>
+              <g stroke="#65926f" fill="none" stroke-width="6" stroke-linecap="round">
+                <path d="M75 516Q89 407 39 287M75 510Q115 396 151 324M75 511Q60 397 100 292"/>
+                <path d="M490 519Q449 394 514 286M490 514Q506 410 448 336M490 515Q541 425 553 347"/>
+              </g>
+              <g fill="#83ad83"><ellipse cx="40" cy="317" rx="20" ry="44" transform="rotate(-32 40 317)"/><ellipse cx="57" cy="373" rx="18" ry="43" transform="rotate(-39 57 373)"/><ellipse cx="99" cy="322" rx="19" ry="46" transform="rotate(30 99 322)"/><ellipse cx="138" cy="355" rx="17" ry="39" transform="rotate(34 138 355)"/><ellipse cx="470" cy="370" rx="18" ry="43" transform="rotate(-34 470 370)"/><ellipse cx="518" cy="320" rx="17" ry="42" transform="rotate(32 518 320)"/><ellipse cx="546" cy="390" rx="16" ry="34" transform="rotate(42 546 390)"/><ellipse cx="441" cy="420" rx="15" ry="35" transform="rotate(-44 441 420)"/></g>
+              <g fill="#bfd5aa"><ellipse cx="115" cy="391" rx="13" ry="29" transform="rotate(-40 115 391)"/><ellipse cx="23" cy="410" rx="18" ry="32" transform="rotate(32 23 410)"/><ellipse cx="547" cy="434" rx="17" ry="30" transform="rotate(-30 547 434)"/></g>
+              <g stroke="#53795a" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" fill="none"><path d="M181 482h209M199 474v82M374 474v82M200 500h172"/><path d="M220 458h144"/></g>
+              <path d="M221 456q60-49 141 0" fill="#d8e3c7" stroke="#53795a" stroke-width="6"/>
+              <g fill="#739d79"><path d="M22 485h100l-15 65H39Z"/><path d="M450 489h100l-15 62h-68Z"/></g>
+              <path d="M0 578c141-31 420-26 570 5v47H0Z" fill="#e6ecdc" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="hero-visual-tag">NATURE · CARE · WARMTH</div>
+          <div class="hero-caption"><strong>실내정원이 있는 한라요양원</strong><small>콘셉트 일러스트 · 실제 시설 사진 교체 예정</small></div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">SCROLL TO EXPLORE</div>
+    </section>
+    <div class="trust-bar" aria-label="한라요양원의 핵심 가치">
+      <div class="container trust-items">
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11Z"/></svg>가족 같은 돌봄</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20v-3c0-4 12-4 12 0v3M19 11l2 2-2 2"/></svg>개별 맞춤 케어</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 10h8M8 13h5"/></svg>보호자와의 소통</div>
+      </div>
+    </div>
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="container about-grid">
+        <div class="about-intro" data-reveal="left">
+          <div class="eyebrow">01 / ABOUT HALLA</div>
+          <h2 class="section-title" id="aboutTitle">돌봄의 시작은<br>따뜻한 마음에서<br>비롯됩니다.</h2>
+          <p>한라요양원은 어르신 한 분 한 분을 내 부모님처럼 소중히 여기며, 하루하루가 행복하고 편안한 시간이 될 수 있도록 사랑과 정성을 다합니다.</p>
+          <p>어르신의 특성과 욕구를 존중하고, 보호자와의 원활한 소통을 통해 믿을 수 있는 돌봄 환경을 만들어 갑니다.</p>
+        </div>
+        <div class="quote-panel" data-reveal="right">
+          <blockquote>“어르신들을 <span>내 부모님과 같은 마음</span>으로 모시며, 하루하루가 행복하실 수 있도록 최선을 다하겠습니다.”</blockquote>
+          <cite>한라요양원 운영 철학</cite>
+          <svg class="quote-leaf" viewBox="0 0 180 230" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"><path d="M26 218c84-85 72-136 109-201"/><path d="M60 174C4 168 4 117 17 98c43 0 64 23 63 54M93 126c52-7 63-52 52-73-40 0-57 24-52 73M110 80C79 62 88 27 106 9c28 12 37 37 24 56"/></svg>
+        </div>
+      </div>
+    </section>
+    <section class="section care" id="care" aria-labelledby="careTitle">
+      <div class="container">
+        <div class="care-header" data-reveal>
+          <div><span class="eyebrow">02 / OUR PROMISE</span><h2 class="section-title" id="careTitle">한라요양원의 세 가지 약속</h2></div>
+          <p class="section-lead">가족의 마음을 담은 돌봄, 개개인을 존중하는 서비스, 그리고 보호자와의 진심 어린 소통을 중요하게 생각합니다.</p>
+        </div>
+        <div class="care-grid">
+          <article class="care-card" data-reveal style="--delay:0ms"><div class="card-top"><span class="care-icon"><svg viewBox="0 0 32 32"><path d="M16 27S5 20 5 12a6 6 0 0 1 11-3.6A6 6 0 0 1 27 12c0 8-11 15-11 15Z"/></svg></span><span class="num">01</span></div><h3>가족 같은 돌봄</h3><p>어르신을 내 부모님처럼 존중하며 사랑과 정성을 바탕으로 편안한 일상을 지원합니다.</p></article>
+          <article class="care-card" data-reveal style="--delay:110ms"><div class="card-top"><span class="care-icon"><svg viewBox="0 0 32 32"><circle cx="16" cy="10" r="5"/><path d="M6 28v-3c0-9 20-9 20 0v3M23 7l3 3 4-5"/></svg></span><span class="num">02</span></div><h3>개별 맞춤 돌봄</h3><p>어르신의 신체 상태와 생활 수행 능력을 고려하여 개별적인 특성과 욕구에 맞춘 돌봄을 제공합니다.</p></article>
+          <article class="care-card" data-reveal style="--delay:220ms"><div class="card-top"><span class="care-icon"><svg viewBox="0 0 32 32"><path d="M5 6h22v16H13l-8 6V6Z"/><path d="M10 12h12M10 17h8"/></svg></span><span class="num">03</span></div><h3>보호자와의 소통</h3><p>보호자와 원활하게 소통하며 어르신의 일상을 함께 살피고 신뢰를 쌓아갑니다.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="garden" id="garden" aria-labelledby="gardenTitle">
+      <div class="container garden-grid">
+        <div class="garden-sticky">
+          <div class="garden-heading" data-reveal><span class="eyebrow">03 / INDOOR GARDEN</span><h2 class="section-title" id="gardenTitle">머무는 순간에도<br>즐거움이 피어나는 공간</h2></div>
+          <div class="garden-stage" id="gardenStage" role="img" aria-label="실내정원을 연상시키는 일러스트 공간, 실제 사진 삽입 예정">
+            <div class="arch" aria-hidden="true"></div>
+            <svg class="plant a" viewBox="0 0 160 250" aria-hidden="true"><path d="M73 242C95 174 83 96 59 18M81 204c-55-21-64-63-62-74 46-1 67 31 62 74ZM81 161c41-23 56-64 48-90-43 10-55 43-48 90ZM69 96C25 84 21 43 28 24c39 5 53 35 41 72Z"/></svg>
+            <svg class="plant b" viewBox="0 0 160 250" aria-hidden="true"><path d="M73 242C95 174 83 96 59 18M81 204c-55-21-64-63-62-74 46-1 67 31 62 74ZM81 161c41-23 56-64 48-90-43 10-55 43-48 90ZM69 96C25 84 21 43 28 24c39 5 53 35 41 72Z"/></svg>
+            <div class="stage-info"><div><strong id="gardenStageTitle">마음을 나누는 실내정원</strong><small id="gardenStageDesc">어르신들이 함께 즐기는 공간</small></div><span class="stage-tag">실제 사진 교체 예정</span></div>
+          </div>
+        </div>
+        <div class="garden-copy" aria-label="실내정원 소개">
+          <article class="garden-step active" data-stage-title="마음을 나누는 실내정원" data-stage-desc="어르신들이 함께 즐기는 공간" data-reveal><span class="step-number">01.</span><div><h3>일상 속 작은 쉼터</h3><p>한라요양원 내부에 마련된 실내정원은 어르신들이 머무르며 즐거운 활동을 함께하는 공간입니다.</p></div></article>
+          <article class="garden-step" data-stage-title="노래로 함께하는 시간" data-stage-desc="실내정원에서 진행하는 노래자랑" data-reveal><span class="step-number">02.</span><div><h3>함께 웃는 노래자랑</h3><p>실내정원에서 노래자랑과 여가활동을 진행하며 어르신들이 즐거움을 나누는 시간을 갖습니다.</p></div></article>
+          <article class="garden-step" data-stage-title="모두를 위한 참여" data-stage-desc="신체 상태에 맞는 편안한 활동" data-reveal><span class="step-number">03.</span><div><h3>어르신 중심의 활동</h3><p>휠체어를 이용하는 어르신이 많은 기관의 특성을 고려해 앉은 자세에서도 참여할 수 있는 프로그램을 중심으로 운영합니다.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="section gallery" id="facilities" aria-labelledby="facilitiesTitle">
+      <div class="container">
+        <div class="section-top" data-reveal><span class="eyebrow">04 / LIVING SPACES</span><h2 class="section-title" id="facilitiesTitle">편안한 일상을 위한<br>정돈된 생활공간</h2><p class="section-lead">여러 생활실과 식당, 개방형 조리실, 세탁실, 목욕실, 별도의 의료·간호실을 갖추고 어르신의 일상생활을 지원합니다.</p></div>
+        <div class="facility-grid">
+          <article class="facility" data-reveal="left"><div class="facility-photo"><div class="facility-placeholder"><svg viewBox="0 0 48 48"><path d="M7 23h34v14H7V23ZM11 23v-9h26v9M10 37v5M38 37v5M11 29h26M18 16v7"/></svg><span>생활실 실제 사진 삽입 예정</span></div></div><div class="facility-copy"><span>SPACE 01</span><h3>생활실</h3><p>여러 개의 생활실로 구분된 공간에서 어르신들이 일상생활을 이어갑니다.</p></div></article>
+          <article class="facility" data-reveal="right"><div class="facility-photo"><div class="facility-placeholder"><svg viewBox="0 0 48 48"><path d="M6 26h36M9 26l2 12h26l2-12M15 19V9M22 19V9M29 19V9M36 19V9M10 42h28"/></svg><span>식당·조리실 실제 사진 삽입 예정</span></div></div><div class="facility-copy"><span>SPACE 02</span><h3>식당과 개방형 조리실</h3><p>어르신을 위한 식당과 식당 내부에 마련된 개방형 조리실이 있습니다.</p></div></article>
+          <article class="facility" data-reveal="left"><div class="facility-photo"><div class="facility-placeholder"><svg viewBox="0 0 48 48"><path d="M24 8v32M8 24h32M16 16h16v16H16z"/><rect x="6" y="6" width="36" height="36" rx="5"/></svg><span>의료·간호실 실제 사진 삽입 예정</span></div></div><div class="facility-copy"><span>SPACE 03</span><h3>의료·간호실</h3><p>건강관리와 간호업무를 위한 별도의 의료·간호 공간을 마련하고 있습니다.</p></div></article>
+          <article class="facility" data-reveal="right"><div class="facility-photo"><div class="facility-placeholder"><svg viewBox="0 0 48 48"><path d="M7 26h34v7c0 5-3 8-9 8H16c-6 0-9-3-9-8v-7ZM11 26V13a6 6 0 0 1 12 0v2M18 15h10M15 41v3M34 41v3"/></svg><span>목욕실·세탁실 실제 사진 삽입 예정</span></div></div><div class="facility-copy"><span>SPACE 04</span><h3>목욕실과 세탁실</h3><p>별도의 세탁실이 있으며 목욕실은 세탁실 옆에 배치되어 있습니다.</p></div></article>
+        </div>
+        <p class="photo-disclaimer">현재 표시된 이미지는 실제 기관 사진이 아닌 자리 안내용 그래픽입니다. 추후 제공받은 시설 사진으로 교체합니다.</p>
+      </div>
+    </section>
+    <section class="section programs" id="programs" aria-labelledby="programsTitle">
+      <div class="container">
+        <div class="program-intro" data-reveal><div><span class="eyebrow">05 / DAILY MOMENTS</span><h2 class="section-title" id="programsTitle">오늘도 함께하는<br>즐겁고 소중한 시간</h2></div><p class="section-lead">어르신의 신체 상태와 참여 능력을 고려하여, 앉은 자세에서도 참여할 수 있는 인지·신체·여가 프로그램을 진행합니다.</p></div>
+        <div class="program-list">
+          <article class="program" data-reveal style="--delay:0ms"><span class="program-index">01 /</span><div class="program-icon"><svg viewBox="0 0 36 36"><path d="M7 9h22v22H7zM12 14h12M12 20h12M12 26h7M12 5h12"/></svg></div><h3>인지활동</h3><p>어르신의 인지기능 유지와 자극을 돕는 다양한 활동을 진행합니다.</p></article>
+          <article class="program" data-reveal style="--delay:90ms"><span class="program-index">02 /</span><div class="program-icon"><svg viewBox="0 0 36 36"><circle cx="18" cy="7" r="4"/><path d="M18 12v11M18 17l-11 5M18 17l11 5M18 23l-7 10M18 23l7 10"/></svg></div><h3>신체활동</h3><p>앉은 자세에서도 참여할 수 있는 가벼운 움직임 활동을 진행합니다.</p></article>
+          <article class="program" data-reveal style="--delay:180ms"><span class="program-index">03 /</span><div class="program-icon"><svg viewBox="0 0 36 36"><path d="M25 6v18c0 8-13 9-13 3 0-5 10-7 13-3M25 6l6-2v7l-6 2"/></svg></div><h3>노래자랑</h3><p>실내정원에서 함께 노래하며 즐거움을 나누는 시간을 갖습니다.</p></article>
+          <article class="program" data-reveal style="--delay:270ms"><span class="program-index">04 /</span><div class="program-icon"><svg viewBox="0 0 36 36"><path d="m18 4 4.5 9 10 1.5-7.2 7 1.7 10L18 27l-9 4.5 1.7-10-7.2-7 10-1.5Z"/></svg></div><h3>여가활동</h3><p>어르신의 흥미와 참여 능력을 고려한 다양한 활동을 진행합니다.</p></article>
+        </div>
+        <div class="programs-note" data-reveal>어르신의 활동 능력에 맞추어 편안하게 참여할 수 있는 프로그램을 중요하게 생각합니다.</div>
+      </div>
+    </section>
+    <section class="callout-section" aria-labelledby="calloutTitle"><div class="container"><div class="callout" data-reveal="scale"><div><h2 id="calloutTitle">가족을 위한 돌봄을 찾고 계신가요?</h2><p>한라요양원의 입소 관련 사항을 전화로 안내받으실 수 있습니다.</p></div><a class="btn btn-white" href="tel:0647126100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3h4l2 5-2.5 2a16 16 0 0 0 5.5 5.5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> 064-712-6100 상담 연결</a></div></div></section>
+    <section class="section admission" id="admission" aria-labelledby="admissionTitle">
+      <div class="container"><div data-reveal><span class="eyebrow">06 / ADMISSION</span><h2 class="section-title" id="admissionTitle">입소 안내</h2><p class="section-lead">장기요양등급을 받은 시설 입소 대상 어르신을 위한 돌봄 서비스를 제공합니다. 세부 사항은 전화로 문의해 주세요.</p></div>
+        <div class="admission-grid">
+          <div class="info-panel" data-reveal="left"><h3>입소 관련 정보</h3><dl class="info-list"><div><dt>입소 대상</dt><dd>장기요양등급을 받은 시설 입소 대상 어르신</dd></div><div><dt>입소 가능 인원</dt><dd><span class="pending">확인 필요</span></dd></div><div><dt>이용 비용</dt><dd><span class="pending">확인 필요</span></dd></div><div><dt>준비 서류 및 절차</dt><dd><span class="pending">확인 필요</span></dd></div></dl></div>
+          <div class="info-panel contact-panel" data-reveal="right"><h3>입소 상담 전화</h3><p>궁금하신 사항은 한라요양원으로 문의해 주세요. 입소 관련 내용을 상담해 드리겠습니다.</p><a class="phone-large" href="tel:0647126100">064-712-6100</a><br><a class="btn" href="tel:0647126100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3h4l2 5-2.5 2a16 16 0 0 0 5.5 5.5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> 입소 상담 전화하기</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section location" id="location" aria-labelledby="locationTitle">
+      <div class="container"><div data-reveal><span class="eyebrow">07 / CONTACT & LOCATION</span><h2 class="section-title" id="locationTitle">오시는 길 및 문의</h2><p class="section-lead">한라요양원과의 첫 만남, 전화 상담으로 시작해 보세요.</p></div>
+        <div class="location-grid">
+          <div class="location-info" data-reveal="left"><h3>한라요양원</h3><dl><div><dt>소재지</dt><dd>제주특별자치도 제주시 용문로</dd></div><div><dt>상세 주소</dt><dd><span class="pending">확인 필요</span></dd></div><div><dt>상담 전화</dt><dd><a href="tel:0647126100">064-712-6100</a></dd></div></dl></div>
+          <div class="map-box" data-reveal="right" role="img" aria-label="정확한 상세 주소 확인 후 지도 삽입 예정"><div class="map-label"><strong>오시는 길 안내</strong><small>지도 연결을 위한 상세 주소 확인 필요</small></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><div class="footer-main"><div><div class="footer-brand">한라요양원</div><p>내 부모님을 모시는 마음으로, 사랑과 정성을 다하겠습니다.</p><p>제주특별자치도 제주시 용문로<br>대표전화 064-712-6100</p></div><a class="btn btn-white" href="tel:0647126100">입소 상담 전화하기 <span aria-hidden="true">↗</span></a></div><div class="footer-small">기관에서 제공한 정보를 바탕으로 제작한 랜딩페이지 시안입니다. 일부 상세 정보와 시설 사진은 확인 후 반영됩니다.</div></div></footer>
+  <div class="mobile-call"><a href="tel:0647126100" class="btn" aria-label="입소 상담 전화하기 064-712-6100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3h4l2 5-2.5 2a16 16 0 0 0 5.5 5.5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> 입소 상담 전화하기 <span class="number">064-712-6100</span></a></div>
+  <script>
+    (()=>{
+      'use strict';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const smallScreen = window.matchMedia('(max-width: 800px)');
+      const nav = document.getElementById('mobileNav');
+      const toggle = document.getElementById('menuToggle');
+      const header = document.getElementById('siteHeader');
+      const progress = document.getElementById('scrollProgress');
+      const heroArt = document.getElementById('heroArt');
+      const gardenStage = document.getElementById('gardenStage');
+      const gardenSteps = [...document.querySelectorAll('.garden-step')];
+      function closeMenu(){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','메뉴 열기');toggle.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';}
+      toggle.addEventListener('click',(event)=>{event.stopPropagation();if(nav.classList.contains('is-open')){closeMenu()}else{nav.classList.add('is-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','메뉴 닫기');toggle.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>'}});
+      nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+      document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeMenu()});
+      document.addEventListener('click',(e)=>{if(nav.classList.contains('is-open')&&!nav.contains(e.target)&&!toggle.contains(e.target))closeMenu()});
+      if('IntersectionObserver' in window && !reduceMotion.matches){
+        document.documentElement.classList.add('motion-ready');
+        const observer = new IntersectionObserver((entries)=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}},{threshold:0.08,rootMargin:'0px 0px -35px 0px'});
+        document.querySelectorAll('[data-reveal]').forEach(el=>observer.observe(el));
+        const stageObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');stageObserver.unobserve(entry.target)}})},{threshold:.22});
+        stageObserver.observe(gardenStage);
+        const stepObserver=new IntersectionObserver((entries)=>{
+          entries.forEach(entry=>{
+            if(!entry.isIntersecting)return;
+            gardenSteps.forEach(s=>s.classList.toggle('active',s===entry.target));
+            document.getElementById('gardenStageTitle').textContent=entry.target.dataset.stageTitle;
+            document.getElementById('gardenStageDesc').textContent=entry.target.dataset.stageDesc;
+          });
+        },{rootMargin:'-25% 0px -52% 0px',threshold:0});
+        gardenSteps.forEach(s=>stepObserver.observe(s));
+      }else{gardenStage.classList.add('is-visible')}
+      // Real scroll progress and a restrained hero parallax; these do not affect content availability.
+      let frame=0;
+      function update(){
+        frame=0;
+        const scrollTop=window.scrollY||document.documentElement.scrollTop;
+        const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+        const percentage=Math.max(0,Math.min(100,(scrollTop/max)*100));
+        progress.style.width=percentage.toFixed(2)+'%';
+        header.classList.toggle('is-scrolled',scrollTop>16);
+        if(!reduceMotion.matches&&!smallScreen.matches&&scrollTop<window.innerHeight*1.5){heroArt.style.transform='translate3d(0,'+(scrollTop*.09).toFixed(1)+'px,0)'}else{heroArt.style.transform=''}
+      }
+      function onScroll(){if(!frame)frame=window.requestAnimationFrame(update)}
+      window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll,{passive:true});
+      reduceMotion.addEventListener?.('change',()=>{if(reduceMotion.matches){document.documentElement.classList.remove('motion-ready');document.querySelectorAll('[data-reveal]').forEach(e=>e.classList.add('is-visible'));gardenStage.classList.add('is-visible')}onScroll()});
+      const sections = [...document.querySelectorAll('main section[id]')];
+      if('IntersectionObserver' in window){
+        const activeNav = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{
+            if(e.isIntersecting){document.querySelectorAll('.desktop-nav a').forEach(a=>{const yes=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('active',yes);if(yes){a.setAttribute('aria-current','location')}else{a.removeAttribute('aria-current')}})}
+          });
+        },{rootMargin:'-20% 0px -70% 0px'});
+        sections.forEach(s=>activeNav.observe(s));
+      }
+      update();
+    })();
+  </script>
+</body>
+</html>
